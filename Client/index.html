@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>글자로 놀자! 끄투 온라인</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript">
+        function getObject(v, i) {
+            Object.defineProperty(v, i, {
+                value: v[i],
+                writable: false
+            });
+        }
+        getObject(window.WebSocket, "send");
+        getObject(window.WebSocket, "onmessage");
+        getObject(window, "WebSocket");
+    </script>
+    <meta name="description" content="온라인 끝말잇기, 앞말잇기, 자음퀴즈, 십자말풀이, 타자 대결까지! 끄투에서 어휘력의 제왕이 되어 보세요.">
+    <meta name="keywords" content="쪼롤,jjo,jjo.kr,끄투,kkutu,끝말잇기,온라인,웹,쿵쿵따,영어끝말잇기,영어쿵쿵따,시리토리,끝말잇기사이트,자음퀴즈,초성퀴즈,자퀴,십자말풀이,가로세로,타자,타자연습,앞말잇기">
+    <meta property="fb:app_id" content="1615999455321446">
+    <meta property="og:image" content="http://kkutu.kr/img/kkutu/logo.png">
+    <meta property="og:url" content="http://kkutu.kr/">
+    <meta property="og:title" content="글자로 놀자! 끄투 온라인">
+    <meta property="og:description" content="끝말잇기가 이렇게 박진감 넘치는 게임이었다니!">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fa.css" />
+    <link rel="stylesheet" href="/css/expl.css" />
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/language/portal/ko_KR"></script>
+    <script type="text/javascript" src="/js/google.js"></script>
+    <script type="text/javascript" src="/js/global.min.js"></script>
+    <script type="text/javascript" src="/js/facebook.js"></script>
+    <link rel="stylesheet" href="/css/in_portal.css" />
+    <script type="text/javascript" src="/js/in_portal.min.js"></script>
+    <link rel="stylesheet" href="/css/in_game_kkutu.css">
+</head>
+
+<body style="min-width: 640px">
+    <div id="Top">
+        <div class="Menu"><button class="menu-btn" id="menu-item-HOME" onclick="location.href = &quot;http://127.0.0.1"><i class='fa fa-home'></i></button>
+            <div class="menu-btn" id="menu-item-GAMES">게임
+                <div class="menu-sub-separator"></div>
+                <div class="menu-sub-btn" onclick="location.href = &quot;/&quot;;">끄투</div>
+            <div id="account"><span id="profile">{}</span>
+                <div id="account-info"></div>
+            </div>
+        </div>
+        <div id="global-notice">
+            <div id="gn-content">끄투 프리서버가 테스트 중 입니다.</div>
+            <div class="expl" style="width: initial">
+                <h5>클릭하여 닫기</h5>
+            </div>
+        </div>
+    </div>
+    <div id="Jungle"><span id="mobile"></span><span id="summonerID"></span><span id="bookmark"></span><img id="Background" src="/img/bg/def.png"></div>
+    <div id="Middle">
+        <div style="float: left; width: 100%; margin: 5px 0px"></div>
+        <div style="float: left; width: 100%">
+            <div style="float: left; padding-left: 70px">
+                <h3 id="holder">글자로 놀자! 끄투 온라인</h3><img id="logo" src="/img/kkutu/short_logo.png"></div>
+            <div id="menu-bar" style="float: right; margin-top: 25px"><a target="_blank" href="//cafe.naver.com/sdbx" style="background-color: #63A95B">샌드박스 :: SDBX</a><a target="_blank" href="//blog.jjo.kr/" style="background-color: #4078DC">개발자 블로그</a></div>
+            <div class="jjoriping" style="margin-top: 40px"><img class="jjoObj jjoEyeL" src="/img/jjoeyeL.png" style="left: -270px"><img class="jjoObj jjoNose" src="/img/jjonose.png" style="left: -170px"><img class="jjoObj jjoEyeR" src="/img/jjoeyeR.png" style="left: -70px">
+                <div class="jjoDisplayBar" style="width: 325px; height: 85px"><button class="jjo-display" id="game-start">게임 시작!</button></div>
+            </div>
+        </div>
+        <div style="float: right; margin-top: -120px; width: 50%">
+            <div class="server-list-box">
+                <h3 class="server-list-title"><a id="server-refresh"><i class="fa fa-refresh"></i><div class="expl" style="width: initial"><h5>서버 목록을 다시 불러옵니다.</h5></div></a><label>서버 목록</label><label id="server-total" style="color: #AAA; font-size: 13px"></label></h3>
+                <div id="server-list"></div>
+            </div>
+        </div>
+        <div style="float: left; width: calc(100% - 4px); border: 2px solid #CCC; margin-top: 10px; background-color: #EEE"><iframe id="kkutu-bulletin" width="100%" height="400px" src="/kkutu_bulletin.html"></iframe></div>
+        <div style="float: left; padding-left: calc(50% - 364px); margin-top: 10px; width: calc(50% + 364px); background-color: rgba(0, 0, 0, 0.5)">
+            <div style="width: 728px; height: 90px; background-color: #777"></div>
+        </div>
+        <div style="float: left; width: 100%; margin: 10px 0px"></div>
+    </div>
+    <div id="Bottom">
+        <div class="bottom-legal">사전 정보 제공:<a href='http://stdweb2.korean.go.kr/' target='_blank'>국립국어원 표준국어대사전</a>, <a href='http://wordnet.princeton.edu' target='_blank'>WordNet</a><br><label style='color: #777777;'>WordNet 3.0 Copyright 2006 by Princeton University. All rights reserved.</label></div>
+        <div class="bottom-legal">도움:<a href='http://cafe.naver.com/sdbx' target='_blank'>샌드박스 :: SDBX</a></div>
+        <div class="bottom-text">JJo.kr isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends.<br> League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends ⓒ Riot Games, Inc.<br></div>
+        <div class="bottom-legal"><a href="http://jjo.kr/legal/agreement">서비스 이용 약관</a><a href="http://jjo.kr/legal/privacy">개인정보 취급 방침</a><br><a class="bottom-contact" href="http://blog.jjo.kr/" target="_blank">개발자 블로그</a><a class="bottom-contact" href="mailto:op@jjo.kr" target="_blank">Contact op@jjo.kr</a></div>
+        <div style="float: left; width: 100%; margin: 10px 0px"></div>
+    </div>
+</body>
+
+</html>
