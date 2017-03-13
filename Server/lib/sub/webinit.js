@@ -1,5 +1,6 @@
 var GLOBAL	 = require("./global.json");
 var JLog	 = require("./jjlog");
+JLog.init("webinit");
 var Language = {
 	'ko_KR': require("../Web/lang/ko_KR.json"),
 	'en_US': require("../Web/lang/en_US.json")

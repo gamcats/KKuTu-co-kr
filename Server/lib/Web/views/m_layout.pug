@@ -21,10 +21,10 @@ html
 			meta(name='keywords', content=LANG['meta_keys'] || L('META_KEYS'))
 		
 		block OpenGraph
-			meta(property='og:image', content='#{locals.ogImage || "http://JJo.kr/img/ogImage.png"}')
-			meta(property='og:url', content='#{locals.ogURL || "http://JJo.kr/"}')
-			meta(property='og:title', content='#{locals.ogTitle || "쪼롤 - League of Legends 정보 검색 사이트"}')
-			meta(property='og:description', content='#{locals.ogDescription || "롤 전적검색은 JJO.KR"}')
+			meta(property='og:image', content=locals.ogImage)
+			meta(property='og:url', content=locals.ogURL)
+			meta(property='og:title', content=locals.ogTitle)
+			meta(property='og:description', content=locals.ogDescription)
 		
 		+PageHead()
 			block Preload
@@ -41,7 +41,7 @@ html
 		div#Jungle
 			span#mobile= locals.mobile
 			span#summonerID= DATA._id
-			img#Background(src='/img/bg/'+(locals.m_bg || 'def.png'))
+			img#Background(style=GAMEBG)
 			block Jungle
 		div#Middle
 			block Middle
@@ -51,6 +51,5 @@ html
 				a(href='?pc=true')= L('AS_PC')
 				br
 				a.bottom-contact(href='http://cafe.naver.com/kkutu/', target='_blank')= L('CREATOR')
-				//a.bottom-contact(href='mailto:op@jjo.kr', target='_blank') Contact op@jjo.kr
 			div.bottom-legal!= L('GPL')
 			+separator(40)

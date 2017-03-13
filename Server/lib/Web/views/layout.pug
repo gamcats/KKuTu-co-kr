@@ -8,13 +8,6 @@ html
 		block Subject
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-		script(async, src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
-		script(type='text/javascript').
-			(adsbygoogle = window.adsbygoogle || []).push({
-				google_ad_client: "ca-pub-2771725256718773",
-				enable_page_level_ads: true
-			});
-	
 		script(type='text/javascript').
 			function getObject(v, i){
 				Object.defineProperty(v, i, { value: v[i], writable: false });
@@ -28,10 +21,10 @@ html
 			meta(name='keywords', content=LANG['meta_keys'] || L('META_KEYS'))
 		
 		block OpenGraph
-			meta(property='og:image', content=locals.ogImage || "http://JJo.kr/img/ogImage.png")
-			meta(property='og:url', content=locals.ogURL || "http://JJo.kr/")
-			meta(property='og:title', content=locals.ogTitle || "쪼롤 - League of Legends 정보 검색 사이트")
-			meta(property='og:description', content=locals.ogDescription || "롤 전적검색은 JJO.KR")
+			meta(property='og:image', content=locals.ogImage)
+			meta(property='og:url', content=locals.ogURL)
+			meta(property='og:title', content=locals.ogTitle)
+			meta(property='og:description', content=locals.ogDescription)
 		
 		+PageHead()
 			block Preload
@@ -48,7 +41,7 @@ html
 		div#Jungle
 			span#mobile= locals.mobile
 			span#summonerID= DATA._id
-			img#Background(src='/img/bg/'+(locals.bg || 'def.png'))
+			img#Background(style=GAMEBG)
 			block Jungle
 		div#Middle
 			block Middle
@@ -59,6 +52,5 @@ html
 					a(href='?')= L('AS_MOBILE')
 				br
 				a.bottom-contact(href='http://cafe.naver.com/kkutu/', target='_blank')= L('CREATOR')
-				//a.bottom-contact(href='mailto:op@jjo.kr', target='_blank') Contact op@jjo.kr
 			div.bottom-legal!= L('GPL')
 			+separator(10)

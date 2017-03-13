@@ -6,6 +6,7 @@ var JLog	 = require("../sub/jjlog");
 var Collection = require("../sub/collection");
 var Pub = require("../sub/checkpub");
 var Lizard = require("../sub/lizard");
+JLog.init("webdb");
 
 const FAKE_REDIS_FUNC = () => {
 	var R = new Lizard.Tail();
@@ -63,6 +64,7 @@ Pub.ready = function(isPub){
 			DB.kkutu_shop = new mainAgent.Table("kkutu_shop");
 			DB.kkutu_shop_desc = new mainAgent.Table("kkutu_shop_desc");
 			
+			DB.ipbanlist = new mainAgent.Table("ipbanlist");
 			DB.session = new mainAgent.Table("session");
 			DB.users = new mainAgent.Table("users");
 			

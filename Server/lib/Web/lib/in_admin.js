@@ -39,6 +39,7 @@
 						.append($("<td>").append(putter("ij-" + item._id + "-theme", 'g', item.theme)))
 						.append($("<td>").append(putter("ij-" + item._id + "-writer", 'g', item.writer)))
 						.append($("<td>").append(putter("ij-" + item._id + "-createdAt", 'g', item.createdAt)))
+						.append($("<td>").append(L["theme_"+item.theme]))
 				});
 			});
 		});

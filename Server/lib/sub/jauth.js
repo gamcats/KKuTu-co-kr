@@ -8,6 +8,7 @@ const GOOGLE_SECRET = "P0TtjQQ_yasg0dTaKkFWg4wX";
 var Web		 = require("request");
 var Lizard	 = require("../sub/lizard");
 var JLog	 = require("../sub/jjlog");
+JLog.init("jauth");
 // var Ajae	 = require("../sub/ajae").checkAjae;
 
 exports.login = function(type, token, sid, token2){

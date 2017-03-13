@@ -1,3 +1,23 @@
+const LICENSE = [
+	"Edited by Kim-Daewoon(hjchokj@naver.com)",
+	"",
+	"Rule the words! KKuTu Online",
+	"Copyright (C) 2017 JJoriping(op@jjo.kr)",
+	"",
+	"This program is free software: you can redistribute it and/or modify",
+	"it under the terms of the GNU General Public License as published by",
+	"the Free Software Foundation, either version 3 of the License, or",
+	"(at your option) any later version.",
+	"",
+	"This program is distributed in the hope that it will be useful,",
+	"but WITHOUT ANY WARRANTY; without even the implied warranty of",
+	"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the",
+	"GNU General Public License for more details.",
+	"",
+	"You should have received a copy of the GNU General Public License",
+	"along with this program. If not, see <http://www.gnu.org/licenses/>."
+].join('\n');
+
 var File = require('fs');
 
 const LIST = [
@@ -35,7 +55,7 @@ module.exports = function(grunt){
 	grunt.initConfig({
 		uglify: {
 			options: {
-				banner: "// KKUTU.CO.KR - KIM_DAEWOON\n\n"
+				banner: "/**\n" + LICENSE + "\n*/\n\n"
 			},
 			build: {
 				files: files
@@ -51,7 +71,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	
-	grunt.registerTask('default', ['concat', 'uglify']);
+	grunt.registerTask('default', ['concat', 'uglify'/*,'pack'*/]);
 	grunt.registerTask('pack', 'Log', function(){
 		var done = this.async();
 		var url = __dirname + "/" + KKUTU;

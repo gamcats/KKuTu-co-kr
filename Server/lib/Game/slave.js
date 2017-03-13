@@ -10,6 +10,7 @@ var KKuTu = require('./kkutu');
 var Lizard = require('../sub/lizard');
 var MainDB = require('../Web/db');
 var JLog = require('../sub/jjlog');
+JLog.init("slave");
 var GLOBAL = require('../sub/global.json');
 
 var DIC = {};

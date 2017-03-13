@@ -1,6 +1,7 @@
 var Web		 = require("request");
 var MainDB	 = require("../db");
 var JLog	 = require("../../sub/jjlog");
+JLog.init("web");
 var Const	 = require("../../const");
 
 function obtain($user, key, value, term, addValue){

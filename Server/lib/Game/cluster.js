@@ -1,6 +1,6 @@
 var Cluster = require("cluster");
 var Const = require('../const');
-var JLog = require('../sub/jjlog');
+var JLog = require('../sub/jjlog');JLog.init("gamecluster");
 var SID = Number(process.argv[2]);
 var CPU = Number(process.argv[3]); //require("os").cpus().length;
 

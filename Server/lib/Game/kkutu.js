@@ -21,6 +21,7 @@ const PER_OKG = 600000;
 
 exports.NIGHT = false;
 exports.init = function(_DB, _DIC, _ROOM, _GUEST_PERMISSION, _CHAN){
+	JLog.init("game_"+process.env['KKUTU_PORT']+"_"+channel);
 	var i, k;
 	
 	DB = _DB;
@@ -182,6 +183,11 @@ exports.WebServer = function(socket){
 				break;
 			case 'narrate-friend':
 				exports.narrate(msg.list, 'friend', { id: msg.id, s: msg.s, stat: msg.stat });
+				break;
+			case "yell":
+				for(i in DIC){
+					DIC[i].send('yell', { value: msg.value, bar:msg.bar });
+				}
 				break;
 			default:
 		}
@@ -491,7 +497,7 @@ exports.Client = function(socket, profile, sid){
 					return my.sendError(401);
 				}
 			}
-			if($room.players.length >= $room.limit + (spec ? Const.MAX_OBSERVER : 0)){
+			if($room.players.length >= $room.limit + (spec ? (($room.effect.league||$room.effect.designer||$room.effect.yt) ? (($room.effect.gm)?42:12) : Const.MAX_OBSERVER) : 0)&&DIC[my.id].equip['BDG']!="b1_gm"){
 				return my.sendError(429);
 			}
 			if($room.players.indexOf(my.id) != -1){
@@ -504,10 +510,10 @@ exports.Client = function(socket, profile, sid){
 				$room = undefined;
 			}else{
 				if(!pass && $room){
-					if($room.kicked.indexOf(my.id) != -1){
+					if($room.kicked.indexOf(my.id) != -1 && DIC[my.id].equip['BDG']!="b1_gm"){
 						return my.sendError(406);
 					}
-					if($room.password != room.password && $room.password){
+					if($room.password != room.password && $room.password && DIC[my.id].equip['BDG']!="b1_gm"){
 						$room = undefined;
 						return my.sendError(403);
 					}
@@ -782,6 +788,8 @@ exports.Room = function(room, channel){
 	my.gaming = false;
 	my.game = {};
 	
+	my.effect = {gm:false,designer:false,league:false,yt:false,bj:false};
+	
 	my.getData = function(){
 		var i, readies = {};
 		var pls = [];
@@ -819,7 +827,8 @@ exports.Room = function(room, channel){
 				mission: my.game.mission
 			},
 			practice: my.practice ? true : false,
-			opts: my.opts
+			opts: my.opts,
+			effect: my.effect
 		};
 	};
 	my.addAI = function(caller){
@@ -868,12 +877,60 @@ exports.Room = function(room, channel){
 		}
 		return false;
 	};
+	my.refreshEffect = function(){
+		my.effect.gm=false;
+		my.effect.designer=false;
+		my.effect.league=false;
+		my.effect.yt=false;
+		my.effect.bj=false;
+		for(i in my.players){
+			if(!my.players[i]) continue;
+			if(!DIC[my.players[i]]) continue;
+			if(!DIC[my.players[i]].equip) continue;
+			if(!DIC[my.players[i]].equip['BDG']) continue;
+			switch(DIC[my.players[i]].equip['BDG']){
+				case "b1_yt":
+					my.effect.yt=true;
+					console.log("yt");
+					return;
+				case "b1_bj":
+					my.effect.bj=true;
+					console.log("bj");
+					return;
+				case "b1_league":
+					my.effect.league=true;
+					console.log("league");
+					return;
+				case "b1_gm":
+					my.effect.gm=true;
+					return;
+				case "b1_designer":
+					my.effect.designer=true;
+					console.log("designer");
+					return;
+			}
+		}
+	};
+	my.applyRoomEffect = function(rw){
+		if(my.effect.league){
+		} else if(my.effect.gm){
+			rw.money = Math.round(rw.money * 2);
+			rw.score = Math.round(rw.score * 2);
+		} else if(my.effect.designer){
+			rw.money = Math.round(rw.money * 1.5);
+			rw.score = Math.round(rw.score * 1.5);
+		} else if(my.effect.yt||my.effect.bj){
+			rw.money = Math.round(rw.money * 1.2);
+			rw.score = Math.round(rw.score * 1.2);
+		}
+	};
 	my.come = function(client){
 		if(!my.practice) client.place = my.id;
 		
 		if(my.players.push(client.id) == 1){
 			my.master = client.id;
 		}
+		my.refreshEffect();
 		if(Cluster.isWorker){
 			client.ready = false;
 			client.team = 0;
@@ -888,6 +945,7 @@ exports.Room = function(room, channel){
 		if(!my.practice) client.place = my.id;
 		var len = my.players.push(client.id);
 		
+		my.refreshEffect();
 		if(Cluster.isWorker){
 			client.ready = false;
 			client.team = 0;
@@ -903,11 +961,13 @@ exports.Room = function(room, channel){
 		var me;
 		
 		if(x == -1){
+			my.refreshEffect();
 			client.place = 0;
 			if(my.players.length < 1) delete ROOM[my.id];
 			return client.sendError(409);
 		}
 		my.players.splice(x, 1);
+		my.refreshEffect();
 		client.game = {};
 		if(client.id == my.master){
 			while(my.removeAI(false, true));
@@ -1176,6 +1236,7 @@ exports.Room = function(room, channel){
 			rw = getRewards(my.mode, o.game.score / res[i].dim, o.game.bonus, res[i].rank, rl, sumScore);
 			rw.playTime = now - o.playAt;
 			o.applyEquipOptions(rw); // 착용 아이템 보너스 적용
+			my.applyRoomEffect(rw);
 			if(rw.together){
 				if(o.game.wpc) o.game.wpc.forEach(function(item){ o.obtain("$WPC" + item, 1); }); // 글자 조각 획득 처리
 				o.onOKG(rw.playTime);
@@ -1415,7 +1476,7 @@ function getRewards(mode, score, bonus, rank, all, ss){
 		* (0.77 + 0.05 * (all - rank) * (all - rank)) // 순위
 		* 1.25 / (1 + 1.25 * sr * sr) // 점차비(양학했을 수록 ↓)
 	;
-	rw.money = 1 + rw.score * 0.01;
+	rw.money = 1 + rw.score * 0.03;
 	if(all < 2){
 		rw.score = rw.score * 0.05;
 		rw.money = rw.money * 0.05;

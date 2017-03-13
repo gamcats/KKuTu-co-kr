@@ -9,6 +9,7 @@ var Server	 = Express();
 var DB		 = require("./db");
 var JAuth	 = require("../sub/jauth");
 var JLog	 = require("../sub/jjlog");
+JLog.init("web");
 var WebInit	 = require("../sub/webinit");
 var GLOBAL	 = require("../sub/global.json");
 var Const	 = require("../const");
@@ -35,18 +36,14 @@ Server.set('view engine', "pug");
 Server.use(Express.static(__dirname + "/public"));
 Server.use(Parser.urlencoded({ extended: true }));
 Server.use(Exession({
-	/* use only for redis-installed
-	
 	store: new Redission({
 		client: Redis.createClient(),
 		ttl: 3600 * 12
-	}),*/
+	}),
 	secret: 'kkutu',
 	resave: false,
 	saveUninitialized: true
 }));
-/* use this if you want
-
 DDDoS = new DDDoS({
 	maxWeight: 6,
 	checkInterval: 10000,
@@ -62,7 +59,7 @@ DDDoS = new DDDoS({
 DDDoS.rules[0].logFunction = DDDoS.rules[1].logFunction = function(ip, path){
 	JLog.warn(`DoS from IP ${ip} on ${path}`);
 };
-Server.use(DDDoS.express());*/
+Server.use(DDDoS.express());
 
 WebInit.init(Server, true);
 DB.ready = function(){
@@ -137,6 +134,11 @@ function GameClient(id, url){
 					gameServers[i].send('narrate-friend', { id: data.id, s: data.s, stat: data.stat, list: data.list[i] });
 				}
 				break;
+			case "yell":
+				for(var j=0;j<gameServers.length;j++){
+					gameServers[j].send('yell', { value: data.value, bar : data.bar });
+				}
+				break;
 			default:
 		}
 	});
@@ -196,8 +198,8 @@ Server.get("/", function(req, res){
 			'IJP_EXCEPT': Const.IJP_EXCEPT,
 			'ogImage': "http://kkutu.kr/img/kkutu/logo.png",
 			'ogURL': "http://kkutu.kr/",
-			'ogTitle': "글자로 놀자! 끄투 온라인",
-			'ogDescription': "끝말잇기가 이렇게 박진감 넘치는 게임이었다니!"
+			'ogTitle': "끄투코리아 - 끝말잇기 온라인",
+			'ogDescription': "끝말잇기, 앞말잇기, 끄투, 십자말풀이 등 여러가지 모드가 있는 게임!"
 		});
 	}
 });
@@ -207,7 +209,7 @@ Server.get("/servers", function(req, res){
 	gameServers.forEach(function(v, i){
 		list[i] = v.seek;
 	});
-	res.send({ list: list });
+	res.send({ list: list, max: Const.KKUTU_MAX });
 });
 
 Server.get("/login", function(req, res){

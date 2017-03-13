@@ -19,10 +19,11 @@
 	var LANG = locals.locale;
 	var SESSION = locals.session;
 	var hour = new Date().getHours();
-	var NIGHT = (hour<5 && hour>7)?true:false;
-	var randombg = Math.floor(Math.random()*3);
-	var INTROIMG = randombg==0?"/img/kkutu/kkutudoggaebiintro.png":(NIGHT?'/img/kkutu/kkutuintronight.png':'/img/kkutu/kkutuintroday.png');
-
+	var NIGHT = (hour<5 || hour>19)?true:false;
+	var randombg = 1+Math.floor(Math.random()*15);
+	var INTROIMG = "/img/kkutu/intro/intro"+randombg+".png";
+	//var GAMEBG = "background-image:url('"+ (NIGHT?"/img/kkutu/gamebgn.png":"/img/kkutu/gamebg_korea.png")+"');";
+	var GAMEBG = "background-image:url('/img/kkutu/gamebg_korea.png');";
 	function L(id){
 		var R = LANG[id] || "(L#"+id+")", i;
 		
@@ -51,9 +52,6 @@ mixin Menu()
 					div.menu-sub-separator
 					- for(j in MENU[i].sub)
 						div.menu-sub-btn(onclick='location.href = "'+MENU[i].sub[j].href+'";')!= L(MENU[i].sub[j].key)
-		div#quick-search
-			input#quick-search-tf(placeholder=L('QUICK_HOLDER'))
-			button#quick-search-btn!= L('QUICK_BTN')
 		div#account
 			span#profile= SESSION.profile ? JSON.stringify(SESSION.profile) : '{}'
 			div#account-info
@@ -66,9 +64,6 @@ mixin MMenu()
 			//div.menu-sub-btn(onclick='location.href = "http://jjo.kr/";', style='margin: 7px 0px; height: 25px;')!= L('HOME')
 			div.menu-sub-btn(onclick='location.href = "/";', style='margin: 7px 0px; height: 25px;')!= L('GAMES_KKUTU')
 			//div.menu-sub-btn(onclick='location.href = "http://jjo.kr/gallery";', style='margin: 7px 0px; height: 25px;')!= L('GALLERY')
-		div#quick-search
-			input#quick-search-tf(placeholder=L('QUICK_HOLDER'))
-			button#quick-search-btn!= L('QUICK_BTN')
 		div#account
 			span#profile= SESSION.profile ? JSON.stringify(SESSION.profile) : '{}'
 			div#account-info

@@ -29,6 +29,18 @@
 .x-gm .users-name::before{ content: "[GM]"; color: #2F77D9; text-shadow: 0px 0px 2px #2AF; }
 .chat-item>.x-gm::before{ content: "[GM]"; color: #2F77D9; text-shadow: 0px 0px 2px #2AF; }
 .room-user-title>.x-gm::before{ content: "[GM]"; color: #2F77D9; text-shadow: 0px 0px 2px #2AF; }
+.x-designer .users-name::before{ content: "[디자이너]"; color: #019c88; text-shadow: 0px 0px 2px #7cffee; }
+.chat-item>.x-designer::before{ content: "[디자이너]"; color: #019c88; text-shadow: 0px 0px 2px #7cffee; }
+.room-user-title>.x-designer::before{ content: "[디자이너]"; color: #019c88; text-shadow: 0px 0px 2px #7cffee; }
+.x-league .users-name::before{ content: "[리그]"; color: #8400ff; text-shadow: 0px 0px 2px #d8aeff; }
+.chat-item>.x-league::before{ content: "[리그]"; color: #8400ff; text-shadow: 0px 0px 2px #d8aeff; }
+.room-user-title>.x-league::before{ content: "[리그]"; color: #8400ff; text-shadow: 0px 0px 2px #d8aeff; }
+.x-bj .users-name::before{ content: "[BJ]"; color: #001eff; text-shadow: 0px 0px 2px #7d8cff; }
+.chat-item>.x-bj::before{ content: "[BJ]"; color: #001eff; text-shadow: 0px 0px 2px #7d8cff; }
+.room-user-title>.x-bj::before{ content: "[BJ]"; color: #001eff; text-shadow: 0px 0px 2px #7d8cff; }
+.x-yt .users-name::before{ content: "[YT]"; color: #ff0030; text-shadow: 0px 0px 2px #ff9aad; }
+.chat-item>.x-yt::before{ content: "[YT]"; color: #ff0030; text-shadow: 0px 0px 2px #ff9aad; }
+.room-user-title>.x-yt::before{ content: "[YT]"; color: #ff0030; text-shadow: 0px 0px 2px #ff9aad; }
 
 .x-red_name{ color: #FF3333; }
 .x-orange_name{ color: #FFA533; }

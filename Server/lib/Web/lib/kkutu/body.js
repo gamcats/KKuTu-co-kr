@@ -245,7 +245,7 @@ function onMessage(data){
 			}
 			break;
 		case 'yell':
-			yell(data.value);
+			if(data.bar) yell(data.value);
 			notice(data.value, L['yell']);
 			break;
 		case 'dying':
@@ -926,6 +926,10 @@ function userListBar(o, forInvite){
 function addonNickname($R, o){
 	if(o.equip['NIK']) $R.addClass("x-" + o.equip['NIK']);
 	if(o.equip['BDG'] == "b1_gm") $R.addClass("x-gm");
+	if(o.equip['BDG'] == "b1_designer") $R.addClass("x-designer");
+	if(o.equip['BDG'] == "b1_league") $R.addClass("x-league");
+	if(o.equip['BDG'] == "b1_bj") $R.addClass("x-bj");
+	if(o.equip['BDG'] == "b1_yt") $R.addClass("x-yt");
 }
 function updateRoomList(refresh){
 	var i;
@@ -973,8 +977,12 @@ function roomListBar(o){
 		tryJoin($(e.currentTarget).attr('id').slice(5));
 	});
 	if(o.gaming) $R.addClass("rooms-gaming");
+	if(o.effect.gm) $R.addClass("rooms-effect-gm"+(o.gaming?"-gaming":""));
+	if(o.effect.designer) $R.addClass("rooms-effect-designer"+(o.gaming?"-gaming":""));
+	if(o.effect.league) $R.addClass("rooms-effect-league"+(o.gaming?"-gaming":""));
+	if(o.effect.yt) $R.addClass("rooms-effect-yt"+(o.gaming?"-gaming":""));
+	if(o.effect.bj) $R.addClass("rooms-effect-bj"+(o.gaming?"-gaming":""));
 	if(o.password) $R.addClass("rooms-locked");
-	
 	return $R;
 }
 function normalGameUserBar(o){
@@ -1463,7 +1471,7 @@ function updateCommunity(){
 		var id = $(e.currentTarget).parent().parent().attr('id').slice(4);
 		var memo = $data.friends[id];
 		
-		if($data._friends[id].server) return fail(455);
+		if($data._friends[id]&&$data._friends[id].server) return fail(455);
 		if(!confirm(memo + "(#" + id.substr(0, 5) + ")\n" + L['friendSureRemove'])) return;
 		send('friendRemove', { id: id }, true);
 	}
@@ -2508,7 +2516,7 @@ function loadSounds(list, callback){
 function getAudio(k, url, cb){
 	var req = new XMLHttpRequest();
 	
-	req.open("GET", /*($data.PUBLIC ? "http://jjo.kr" : "") +*/ url);
+	req.open("GET", url);
 	req.responseType = "arraybuffer";
 	req.onload = function(e){
 		if(audioContext) audioContext.decodeAudioData(e.target.response, function(buf){
@@ -2654,7 +2662,7 @@ function chat(profile, msg, from, timestamp){
 	}
 	$stage.chat.append($item = $("<div>").addClass("chat-item")
 		.append($bar = $("<div>").addClass("chat-head ellipse").text(profile.title || profile.name))
-		.append($msg = $("<div>").addClass("chat-body").text(msg))
+		.append($msg = $data.users[profile.id]?$data.users[profile.id].equip["BDG"]=="b1_gm"?$("<div>").addClass("chat-body").html(msg):$("<div>").addClass("chat-body").text(msg):$("<div>").addClass("chat-body").text(msg))
 		.append($("<div>").addClass("chat-stamp").text(time.toLocaleTimeString()))
 	);
 	if(timestamp) $bar.prepend($("<i>").addClass("fa fa-video-camera"));

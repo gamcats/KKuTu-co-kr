@@ -12,8 +12,11 @@
 			refi: $("#server-refresh>i")
 		};
 		
+		var hour = new Date().getHours();
+		var NIGHT = (hour<5 || hour>19)?true:false;
+		var GAMEBG = NIGHT?"/img/kkutu/gamebgn.png":"/img/kkutu/gamebg_korea.png";
 		$("#Background").attr('src', "").addClass("jt-image").css({
-			'background-image': "url(/img/kkutu/gamebg.png)",
+			'background-image': "url("+GAMEBG+")",
 			'background-size': "200px 200px"
 		});
 		$stage.start.prop('disabled', true).on('click', function(e){

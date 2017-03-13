@@ -39,6 +39,7 @@ const ENABLE_FORM = exports.ENABLE_FORM = [ "S", "J" ];
 const MODE_LENGTH = exports.MODE_LENGTH = Const.GAME_TYPE.length;
 const PORT = process.env['KKUTU_PORT'];
 
+
 process.on('uncaughtException', function(err){
 	var text = `:${PORT} [${new Date().toLocaleString()}] ERROR: ${err.toString()}\n${err.stack}\n`;
 	
@@ -56,7 +57,10 @@ function processAdmin(id, value){
 	});
 	switch(cmd){
 		case "yell":
-			KKuTu.publish('yell', { value: value });
+			yell(value, false);
+			return null;
+		case "yelll":
+			yell(value, true);
 			return null;
 		case "kill":
 			if(temp = DIC[value]){
@@ -83,6 +87,48 @@ function processAdmin(id, value){
 				if(DIC[id]) DIC[id].send('tail', { a: i ? "tuX" : "tu", rid: temp.id, id: id, msg: temp.getData() });
 			}
 			return null;
+		case "ipcheck":
+			try{
+				if(DIC[value]&&DIC[id]) DIC[id].send('tail', { a: "IP CHECK", rid: value, id: "", msg: DIC[value].socket.upgradeReq.connection.remoteAddress });
+			}
+			catch(e){console.log(e);}
+			return null;
+		case "ban":
+			var banid = value.split(" ")[0];
+			var message = value.slice(id.length).trim();
+			try{
+				MainDB.users.update([ '_id', banid ]).set([ 'black', message ]).on();
+				if(DIC[banid]&&DIC[id]) DIC[id].send('tail', { a: "BANNED", rid: banid, id: "", msg: "BANNED:"+message });
+				DIC[banid].socket.send('{"type":"error","code":999,"message":"'+message+'"}');
+				DIC[banid].socket.close();
+			}
+			catch(e){console.log(e);}
+			return null;
+		case "unban":
+			MainDB.users.update([ '_id', value ]).set([ 'black', '' ]).on();
+			DIC[id].send('tail', { a: "UNBANNED", rid: value, id: "", msg: "UNBANNED/"+value });
+			return null;
+		case "banip":
+			var banip = value.split(" ")[0];
+			var message = value.slice(banip.length).trim();
+			try{
+				MainDB.ipbanlist.insert(["ip",banip],[ 'msg', message ]).on();
+				DIC[id].send('tail', { a: "BANNED-IP", rid: banip, id: "", msg: "BANNED-IP:"+message });
+				for (var key in DIC) {
+					var tempip = DIC[key].socket.upgradeReq.connection.remoteAddress;
+					if(banip==tempip){
+						DIC[key].socket.send('{"type":"error","code":999,"message":"'+message+'"}');
+						DIC[key].socket.close();
+						DIC[id].send('tail', { a: "KICKED", rid: banip, id: "", msg: "KICKED BECAUSE OF IP BAN/"+tempip });
+					}
+				}
+			}
+			catch(e){console.log(e);}
+			return null;
+		case "unbanip":
+			MainDB.ipbanlist.remove([ 'ip', value ]).on();
+			DIC[id].send('tail', { a: "UNBANNED-IP", rid: value, id: "", msg: "UNBANNED-IP/"+value });
+			return null;
 		case "dump":
 			if(DIC[id]) DIC[id].send('yell', { value: "This feature is not supported..." });
 			/*Heapdump.writeSnapshot("/home/kkutu_memdump_" + Date.now() + ".heapsnapshot", function(err){
@@ -93,6 +139,11 @@ function processAdmin(id, value){
 				if(DIC[id]) DIC[id].send('yell', { value: "DUMP OK" });
 				JLog.success("Dumping success.");
 			});*/
+			return null;
+		case "roommaster":
+			var values = value.split(" ");
+			ROOM[values[0]].master=values[1];
+			KKuTu.publish('room', { target: ROOM[values[0]].id, room: $room.getData(), modify: true });
 			return null;
 	}
 	return value;
@@ -132,6 +183,12 @@ function narrateFriends(id, friends, stat){
 			break;
 		}
 	});
+}
+function yell(value, val){
+	for(i in WDIC){
+		WDIC[i].send('yell', { value: value, bar:val });
+		break;
+	}
 }
 Cluster.on('message', function(worker, msg){
 	var temp;
@@ -246,6 +303,7 @@ Cluster.on('message', function(worker, msg){
 	}
 });
 exports.init = function(_SID, CHAN){
+	JLog.init("game_"+process.env['KKUTU_PORT']);
 	SID = _SID;
 	MainDB = require('../Web/db');
 	MainDB.ready = function(){
@@ -259,7 +317,13 @@ exports.init = function(_SID, CHAN){
 		Server.on('connection', function(socket){
 			var key = socket.upgradeReq.url.slice(1);
 			var $c;
-			
+			MainDB.ipbanlist.findOne(["ip",socket.upgradeReq.connection.remoteAddress]).on(function(banmsg){
+				if(!banmsg)return;
+				socket.send('{"type":"error","code":999,"message":"'+banmsg.msg+'"}');
+				socket.close();
+				JLog.info("KICKED BECAUSE OF IP BAN/"+socket.upgradeReq.connection.remoteAddress);
+				for(var i=0;i<DIC.length;i++)DIC[i].send('tail', { a: "KICKED", rid: socket.upgradeReq.connection.remoteAddress, id: "", msg: "KICKED BECAUSE OF IP BAN/"+socket.upgradeReq.connection.remoteAddress });
+			});
 			socket.on('error', function(err){
 				JLog.warn("Error on #" + key + " on ws: " + err.toString());
 			});
@@ -361,7 +425,13 @@ KKuTu.onClientMessage = function($c, msg){
 			if(!msg.value) return;
 			if(!$c.admin) return;
 			
-			$c.publish('yell', { value: msg.value });
+			yell(msg.value,false);
+			break;
+		case 'yelll':
+			if(!msg.value) return;
+			if(!$c.admin) return;
+			
+			yell(msg.value,true);
 			break;
 		case 'refresh':
 			$c.refresh();

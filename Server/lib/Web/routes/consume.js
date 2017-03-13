@@ -1,5 +1,6 @@
 var MainDB	 = require("../db");
 var JLog	 = require("../../sub/jjlog");
+JLog.init("web");
 
 exports.run = function(Server, page){
 

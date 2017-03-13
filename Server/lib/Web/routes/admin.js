@@ -2,6 +2,7 @@ var File	 = require("fs");
 var MainDB	 = require("../db");
 var GLOBAL	 = require("../../sub/global.json");
 var JLog	 = require("../../sub/jjlog");
+JLog.init("web");
 var Lizard	 = require("../../sub/lizard.js");
 
 exports.run = function(Server, page){

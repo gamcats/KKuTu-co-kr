@@ -29,6 +29,8 @@ block JS
 
 block CSS
 	link(rel='stylesheet', href='/css/in_game_kkutu_shop.css')
+	link(rel='stylesheet', href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css')
+	link(rel='stylesheet', href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css')
 	
 block Jungle
 	span#PUBLIC= PUBLIC ? "true" : undefined
@@ -435,6 +437,15 @@ block Middle
 		input#Talk(maxlength=200)
 		button#ChatBtn= L('send')
 	+Product('AD')
+		script(async,src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+		ins.adsbygoogle(style="display:inline-block;width:728px;height:90px",data-ad-client="ca-pub-8383440458165932",data-ad-slot="1656395603")
+		script(type='text/javascript').
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		//div.AD_1
+		//	div#realssp_kkutu00001_7261.realssp_dv(data-mcode="a2t1dHUwMDAwMV83MjYx")
+		//	script(async, src="http://nw.realssp.co.kr/realclickssp.js?v=1.0&m=kkutu00001_7261&t=j")
+		//div.AD_2
+		//	script(src="//ad.ilikesponsorad.com/ad/ad.js?adImpMgrCode=46673&width=468&height=60")
 
 block Bottom
 	div.bottom-legal!= L('dictionarySupport')

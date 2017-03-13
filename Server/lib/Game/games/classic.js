@@ -1,5 +1,7 @@
 ﻿var Const = require('../../const');
 var Lizard = require('../../sub/lizard');
+var JLog = require('../../sub/jjlog');
+JLog.init("game_"+process.env['KKUTU_PORT']+"_"+process.env['CHANNEL']);
 var DB;
 var DIC;
 
@@ -216,6 +218,43 @@ exports.submit = function(client, text){
 				if(!my.game.chain) return;
 				if(!my.game.dic) return;
 				
+				/*
+				if(!client.robot){
+					if(text=="끄투모두해" || text=="modookkutu"){
+						function obtain($user, key, value, term, addValue){
+							var now = (new Date()).getTime();
+							if(term){
+								if($user.box[key]){
+									if(addValue) $user.box[key].value += value;
+									else $user.box[key].expire += term;
+								}else $user.box[key] = { value: value, expire: Math.round(now * 0.001 + term) }
+							}else{
+								$user.box[key] = ($user.box[key] || 0) + value;
+							}
+						}
+						var gid = "be_event1";
+						var USER = DIC[my.game.seq[my.game.turn]];
+						if(USER.guest){
+							client.publish('yell', { value: "아쉽지만 게스트라서 휘장 지급이 안되었어요 ㅠㅠ 로그인후 다시 해보는걸로!" }, true);
+						} else{
+							DB.kkutu_shop.findOne([ '_id', gid ]).on(function($item){
+								DB.users.findOne([ '_id', USER.id ]).limit([ 'box', true ]).on(function($user){
+									if(!$user.box) $user.box = {};
+									obtain($user, gid, 1, $item.term);
+									DB.users.update([ '_id', USER.id]).set(
+										[ 'box', $user.box ]
+									).on(function($fin){
+									});
+									console.log(my.box);
+									client.box = $user.box;
+								});
+							});
+							client.publish('yell', { value: "축하합니다! "+(USER.profile.title ?USER.profile.title : USER.profile.name)+"님이 이벤트성 휘장, '끄투 모두해' 휘장을 지급 받으셨습니다!" }, true);
+							JLog.log('[RECEIVED]item:'+gid+' who:'+USER.id);
+						}
+					}
+				}*/
+				
 				my.game.loading = false;
 				my.game.late = true;
 				clearTimeout(my.game.turnTimer);
@@ -244,35 +283,6 @@ exports.submit = function(client, text){
 				if(!client.robot){
 					client.invokeWordPiece(text, 1);
 					DB.kkutu[l].update([ '_id', text ]).set([ 'hit', $doc.hit + 1 ]).on();
-					if(text=="끄투모두해"||text=="modookkutu"){
-						function obtain($user, key, value, term, addValue){
-							var now = (new Date()).getTime();
-							if(term){
-								if($user.box[key]){
-									if(addValue) $user.box[key].value += value;
-									else $user.box[key].expire += term;
-								}else $user.box[key] = { value: value, expire: Math.round(now * 0.001 + term) }
-							}else{
-								$user.box[key] = ($user.box[key] || 0) + value;
-							}
-						}
-						var gid = "be_event1";
-						var uid = my.game.seq[my.game.turn];
-						DB.kkutu_shop.findOne([ '_id', gid ]).on(function($item){
-							DB.users.findOne([ '_id', uid ]).limit([ 'box', true ]).on(function($user){
-								if(!$user.box) $user.box = {};
-								
-								obtain($user, gid, 1, $item.term);
-								DB.users.update([ '_id', uid ]).set(
-									[ 'box', $user.box ]
-								).on(function($fin){
-								});
-								// HIT를 올리는 데에 동시성 문제가 발생한다. 조심하자.
-								DB.kkutu_shop.update([ '_id', gid ]).set([ 'hit', $item.hit + 1 ]).on();
-							});
-						});
-						client.publish('yell', { value: "축하합니다! "+(DIC[my.game.seq[my.game.turn]].profile.title ?DIC[my.game.seq[my.game.turn]].profile.title : DIC[my.game.seq[my.game.turn]].profile.name)+"님이 이벤트성 휘장, '끄투 모두해' 휘장을 지급 받으셨습니다!" }, true);
-					}
 				}
 			}
 			if(firstMove || my.opts.manner) getAuto.call(my, preChar, preSubChar, 1).then(function(w){
