@@ -1,3 +1,5 @@
+# KKuTu Korea
+**끄투코리아** 에 추가된 모든 리소스(이미지,음성 등)의 저작권은 **끄투코리아**에 있으며, 다른 서버에서의 사용을 허용하지 않습니다.
 # KKuTu
 - Made by [JJoriping](http://blog.jjo.kr/)
 - Special thanks to
