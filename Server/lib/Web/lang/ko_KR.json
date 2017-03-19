@@ -1,7 +1,11 @@
 {
 	"GLOBAL": {
-		"GPL": "<div style='color: #666;'>글자로 놀자! 끄투 온라인 Copyright (C) 2017 끄투코리아(김대운: hjchokj@naver.com)<br>이 프로그램은 제품에 대한 어떠한 형태의 보증도 제공되지 않습니다.<br>이 프로그램은 자유 소프트웨어이며 배포 규정을 만족시키는 조건 아래 자유롭게 재배포할 수 있습니다.<br>이에 대한 자세한 사항은 본 프로그램의 구현을 담은 다음 레포지토리에서 확인하십시오: <a target='_blank' href='https://github.com/Ganggroid/KKuTu-co-kr'>https://github.com/Ganggroid/KKuTu-co-kr</a></div>",
-		"CREATOR":	"끄투 팬카페",
+		"CREATOR": "글자로 놀자! 끄투 온라인 Copyright (C) 2017 끄투코리아(김대운: hjchokj@naver.com)",
+		"DICTIONARY": "사전 정보 제공:<a href='http://wordnet.princeton.edu' target='_blank'>WordNet</a><br><label style='color: #777777;'><a href='http://wordnet.princeton.edu' target='_blank'>WordNet</a> 3.0 Copyright 2006 by Princeton University. All rights reserved.</label>",
+		"LICENSE": "<div style='color: #666;'>이 프로그램은 제품에 대한 어떠한 형태의 보증도 제공되지 않으며 배포 규정을 만족시키는 조건 아래 자유롭게 재배포할 수 있습니다.<br>이에 대한 자세한 사항은 본 프로그램의 구현을 담은 다음 레포지토리에서 확인하십시오: <a target='_blank' href='https://github.com/Ganggroid/KKuTu-co-kr'>https://github.com/Ganggroid/KKuTu-co-kr</a></div>",
+		"CAFE":	"끄투 팬카페",
+		"DISCORD":	"디스코드",
+		"FACEBOOK":	"페이스북",
 		"HOME":		"FA{home}",
 		"DB":		"쪼롤백과",
 		"DB_CHAMP":		"챔피언",
@@ -16,6 +20,7 @@
 		"ETC":		"???",
 		"ETC_ABOUT":	"쪼롤이 뭐지",
 		"SETTING":	"설정",
+		"PRIVACY":	"개인정보처리방침",
 		
 		"GLOBAL_NOTICE": "클릭하여 닫기",
 		"META_DESC": "끝말잇기 온라인 - 끝말잇기, 앞말잇기, 끄투, 십자말풀이 등 여러가지 모드가 있는 게임!",
@@ -173,10 +178,10 @@
 	},
 	"kkutu": {
 		"title": "글자로 놀자! 끄투 온라인",
-		"version": "1.0.6",
+		"version": "1.0.7",
 		
 		"meta_desc": "온라인 끝말잇기, 앞말잇기, 자음퀴즈, 십자말풀이, 타자 대결까지! 끄투에서 어휘력의 제왕이 되어 보세요.",
-		"meta_keys": "쪼롤,jjo,jjo.kr,끄투,kkutu,끝말잇기,온라인,웹,쿵쿵따,영어끝말잇기,영어쿵쿵따,시리토리,끝말잇기사이트,자음퀴즈,초성퀴즈,자퀴,십자말풀이,가로세로,타자,타자연습,앞말잇기",
+		"meta_keys": "끄투코리아,끄투,kkutu,끝말잇기,온라인,웹,쿵쿵따,영어끝말잇기,영어쿵쿵따,시리토리,끝말잇기사이트,자음퀴즈,초성퀴즈,자퀴,십자말풀이,가로세로,타자,타자연습,앞말잇기",
 		
 		"gameStart": "게임 시작!",
 		"serverList": "서버 목록",
@@ -191,7 +196,6 @@
 		"serverEnter": "접속",
 		
 		"websocketUnsupport": "본 게임은 Internet Explorer(10), 크롬(16), 파이어폭스(11), 오페라(12.1), 사파리(6) 이상의 버전에서 지원합니다!<br>브라우저를 업데이트해 주세요.",
-		"dictionarySupport": "<label style='color: #777777;'><a href='http://wordnet.princeton.edu' target='_blank'>WordNet</a> 3.0 Copyright 2006 by Princeton University. All rights reserved.</label>",
 		"oceanix": "OceanIX",
 		"etcSupport": "공동대표 김대운, 이은학",
 		"welcome": "환영합니다.",

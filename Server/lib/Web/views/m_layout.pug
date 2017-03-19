@@ -48,8 +48,19 @@ html
 		div#Bottom
 			block Bottom
 			div.bottom-legal
-				a(href='?pc=true')= L('AS_PC')
+				a.bottom-privacy(href='/privacy.html', target='_blank')= L('PRIVACY')
+				//div.fb-like(data-href='https://www.facebook.com/kkutukorea', data-width='300', data-layout='button_count', data-action='like', data-show-faces='false')
 				br
-				a.bottom-contact(href='http://cafe.naver.com/kkutu/', target='_blank')= L('CREATOR')
-			div.bottom-legal!= L('GPL')
-			+separator(40)
+				label(style="color:#777777")!= L('CREATOR')
+			div.bottom-legal
+				div!= L('DICTIONARY')
+			div.bottom-legal
+				if locals.as_pc
+					a(href='?')= L('AS_MOBILE')
+				a.bottom-contact(href='http://cafe.naver.com/kkutu/', target='_blank')= L('CAFE')
+				a.bottom-contact(href='/discord', target='_blank')= L('DISCORD')
+				a.bottom-contact(href='/facebook', target='_blank')= L('FACEBOOK')
+			div.bottom-legal!= L('LICENSE')
+			+separator(10)
+		div#fb-root
+		script(type='text/javascript', src='/js/facebook.js')

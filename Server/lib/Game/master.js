@@ -142,8 +142,13 @@ function processAdmin(id, value){
 			return null;
 		case "roommaster":
 			var values = value.split(" ");
-			ROOM[values[0]].master=values[1];
-			KKuTu.publish('room', { target: ROOM[values[0]].id, room: $room.getData(), modify: true });
+			if(!DIC[values[1]]) return;
+			if(!(temp = ROOM[values[0]])) return;
+			if(temp.gaming) return;
+			if($c.place != DIC[values[1]].place) return;
+			
+			temp.master = values[1];
+			temp.export();
 			return null;
 	}
 	return value;
@@ -357,7 +362,7 @@ exports.init = function(_SID, CHAN){
 					return;
 				}
 				if($c.guest){
-					if(SID != "0"){
+					if(SID != "0"&&SID != "1"){
 						$c.sendError(402);
 						$c.socket.close();
 						return;

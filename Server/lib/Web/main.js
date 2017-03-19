@@ -146,17 +146,24 @@ function GameClient(id, url){
 ROUTES.forEach(function(v){
 	require(`./routes/${v}`).run(Server, WebInit.page);
 });
+Server.get("/discord",function(req,res){
+	return res.redirect("https://discord.gg/dNmtmhw");
+});
+Server.get("/facebook",function(req,res){
+	return res.redirect("//www.facebook.com/kkutukorea/");
+});
 Server.get("/", function(req, res){
 	var server = req.query.server;
+	var before = req.query.before;
 	
 	if(req.query.code){ // 네이버 토큰
 		req.session.authType = "naver";
 		req.session.token = req.query.code;
-		res.redirect("/register");
+		res.redirect("/register?before="+(before?before:"/"));
 	}else if(req.query.token){ // 페이스북 토큰
 		req.session.authType = "facebook";
 		req.session.token = req.query.token;
-		res.redirect("/register");
+		res.redirect("/register?before="+(before?before:"/"));
 	}else{
 		DB.session.findOne([ '_id', req.session.id ]).on(function($ses){
 			// var sid = (($ses || {}).profile || {}).sid || "NULL";
@@ -196,10 +203,10 @@ Server.get("/", function(req, res){
 			'KO_THEME': Const.KO_THEME,
 			'EN_THEME': Const.EN_THEME,
 			'IJP_EXCEPT': Const.IJP_EXCEPT,
-			'ogImage': "http://kkutu.kr/img/kkutu/logo.png",
-			'ogURL': "http://kkutu.kr/",
+			'ogImage': "http://kkutu.co.kr/kkutukorea.png",
+			'ogURL': "http://kkutu.co.kr/",
 			'ogTitle': "끄투코리아 - 끝말잇기 온라인",
-			'ogDescription': "끝말잇기, 앞말잇기, 끄투, 십자말풀이 등 여러가지 모드가 있는 게임!"
+			'ogDescription': "끝말잇기, 앞말잇기, 끄투, 십자말풀이 등 개꿀잼 게임!"
 		});
 	}
 });
@@ -207,14 +214,15 @@ Server.get("/servers", function(req, res){
 	var list = [];
 	
 	gameServers.forEach(function(v, i){
-		list[i] = v.seek;
+		if(v!=undefined&&v!=null&&v.seek!=undefined&&v.seek!=null) list.push(v.seek);
 	});
 	res.send({ list: list, max: Const.KKUTU_MAX });
 });
 
 Server.get("/login", function(req, res){
+	var before = req.query.before;
 	if(global.isPublic){
-		page(req, res, "login", { '_id': req.session.id, 'text': req.query.desc });
+		page(req, res, "login", { '_id': req.session.id, 'text': req.query.desc, "before":before });
 	}else{
 		var now = Date.now();
 		var id = req.query.id || "ADMIN";
@@ -233,17 +241,19 @@ Server.get("/login", function(req, res){
 	}
 });
 Server.get("/logout", function(req, res){
+	var before = req.query.before;
 	if(!req.session.profile){
-		return res.redirect("/");
+		return res.redirect(before?before:"/");
 	}
 	JAuth.logout(req.session.profile).then(function(){
 		delete req.session.profile;
 		DB.session.remove([ '_id', req.session.id ]).on(function($res){
-			res.redirect("/");
+			res.redirect(before?before:"/");
 		});
 	});
 });
 Server.get("/register", function(req, res){
+	var before = req.query.before;
 	if(!req.session.token) return res.sendStatus(400);
 	
 	JAuth.login(req.session.authType, req.session.token, req.session.id, req.session.token2).then(function($profile){
@@ -260,7 +270,7 @@ Server.get("/register", function(req, res){
 		}).on();
 		DB.users.findOne([ '_id', $profile.id ]).on(function($body){
 			req.session.profile = $profile;
-			res.redirect("/");
+			res.redirect(before?before:"/");
 			DB.users.update([ '_id', $profile.id ]).set([ 'lastLogin', now ]).on();
 		});
 	});

@@ -77,7 +77,7 @@ mixin FA(id)
 	i(class="fa fa-"+id)
 
 mixin separator(len)
-	div(style="float: left; width: 100%; margin: "+len+"px 0px;")
+	div(style="float: left; width: 100%; margin-top: : "+len+"px;")
 	
 mixin PageHead(min)
 	if !min
@@ -90,8 +90,6 @@ mixin PageHead(min)
 	if PUBLIC && !SESSION.admin
 		script(type='text/javascript', src='/js/google.js')
 	script(type='text/javascript', src='/js/global.min.js')
-	if !min
-		script(type='text/javascript', src='/js/facebook.js')
 	if block
 		block
 	link(rel='stylesheet', href='/css/in_'+locals.page.replace("/", "_")+'.css')

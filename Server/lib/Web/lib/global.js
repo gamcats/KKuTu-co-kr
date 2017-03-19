@@ -135,7 +135,7 @@ var L;
 		var tl = [ (size[0] - 200) * 0.5, (size[1] - 300) * 0.5 ];
 		
 		// $.cookie('preprev', location.href);
-		location.href = "/login";
+		location.href = "/login?before="+location.href;
 	}
 	function requestLogout(e){
 		/*if(location.host == "kkutu.kr"){
@@ -145,11 +145,11 @@ var L;
 		}*/
 		if(global.profile.type == "facebook") FB.getLoginStatus(function(res){
 			if(res.status == "connected") FB.logout(function(res){
-				location.href = "/logout";
+				location.href = "/logout?before="+location.href;
 			});
-			else location.href = "/logout";
+			else location.href = "/logout?before="+location.href;
 		});
-		else location.href = "/logout";
+		else location.href = "/logout?before="+location.href;
 	}
 	function onWatchInput($o, prev){
 		var cid = $o.attr('id');

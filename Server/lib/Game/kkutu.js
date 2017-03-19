@@ -497,7 +497,7 @@ exports.Client = function(socket, profile, sid){
 					return my.sendError(401);
 				}
 			}
-			if($room.players.length >= $room.limit + (spec ? (($room.effect.league||$room.effect.designer||$room.effect.yt) ? (($room.effect.gm)?42:12) : Const.MAX_OBSERVER) : 0)&&DIC[my.id].equip['BDG']!="b1_gm"){
+			if($room.players.length >= $room.limit + (spec ? (($room.effect.gm||$room.effect.league||$room.effect.designer||$room.effect.yt) ? (($room.effect.gm)?42:12) : Const.MAX_OBSERVER) : 0)&&DIC[my.id].equip['BDG']!="b1_gm"){
 				return my.sendError(429);
 			}
 			if($room.players.indexOf(my.id) != -1){

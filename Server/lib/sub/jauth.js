@@ -83,7 +83,7 @@ exports.login = function(type, token, sid, token2){
 				$p.type = "facebook";
 				$p.id = doc.id;
 				$p.name = doc.name;
-				$p.image = "https://graph.facebook.com/"+doc.id+"/picture?type=large";
+				$p.image = "https://graph.facebook.com/"+doc.id+"/picture?width=20&height=20";
 				
 				/* 망할 셧다운제
 				
@@ -132,7 +132,7 @@ exports.login = function(type, token, sid, token2){
 						$p.type = "google";
 						$p.id = doc.sub;
 						$p.name = doc.name;
-						$p.image = doc.picture;
+						$p.image = doc.picture+"?sz=20";
 						R.go($p);
 						
 						/* 망할 셧다운제

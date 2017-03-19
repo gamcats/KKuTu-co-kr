@@ -5,3 +5,4 @@
   @SET PATHEXT=%PATHEXT:;.JS;=;%
   node  "%~dp0\node_modules\grunt\bin\grunt" %*
 )
+pause

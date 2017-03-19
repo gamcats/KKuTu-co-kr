@@ -50,11 +50,11 @@
 			}
 			
 			if(fbStatus.status == "connected"){
-				redirect("/?token="+fbStatus.authResponse.accessToken);
+				redirect("/?before="+encodeURI($("#before").html())+"&token="+fbStatus.authResponse.accessToken);
 			}else{
 				FB.login(function(res){
 					if(res.authResponse){
-						redirect("/?token="+res.authResponse.accessToken);
+						redirect("/?before="+encodeURI($("#before").html())+"&token="+res.authResponse.accessToken);
 					}else{
 						history.back();
 					}
@@ -69,7 +69,7 @@
 			var ar = user.getAuthResponse(true);
 			
 			console.log(ar);
-			$.post("/login/google", { it: ar.id_token, at: ar.access_token }, onLoggedIn);
+			$.post("/login/google?before="+encodeURI($("#before").html()), { it: ar.id_token, at: ar.access_token }, onLoggedIn);
 		}
 		function gNO(err){
 			if(!ggStatus) return;
@@ -77,7 +77,7 @@
 		}
 		function onLoggedIn(res){
 			if(res.error) return alert("ERROR " + res.error);
-			redirect("/register");
+			redirect("/register?before="+encodeURI($("#before").html()));
 		}
 		function redirect(to){
 			$.post("/session/set", { bm: $.cookie('bm') }, function(res){
