@@ -19,7 +19,6 @@ const LICENSE = [
 ].join('\n');
 
 var File = require('fs');
-
 const LIST = [
 	"global",
 	
