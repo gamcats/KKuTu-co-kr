@@ -1,0 +1,8 @@
+{
+	"ADMIN": [ "" ],
+	"MAIN_PORTS": [  ],
+	"KKUTUHOT_PATH": "E:\\KKUTU\\data\\kkutuhot.json",
+	"PG_PASS": "",
+	"PG_PORT": 5432,
+	"PASS" : ""
+}

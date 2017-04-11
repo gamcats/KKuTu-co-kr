@@ -1,0 +1,51 @@
+.goods{
+	margin: 2px;
+	border-radius: 5px;
+	padding: 3px;
+	width: 240px;
+	height: 50px;
+	box-shadow: 0px 1px 1px #777777;
+	cursor: pointer;
+}
+	.goods:hover{ background-color: #F4F4F4; }
+	.goods-image{ margin: 2px; width: 50px; height: 50px; }
+	.goods-title{ margin: 2px 0px; width: 186px; font-size: 15px; font-weight: bold; }
+	.goods-cost{ margin: 2px 0px; width: 186px; color: #3333FF; }
+.shop-categories{ margin: -3px 0px 5px 0px; }
+	.shop-type{
+		padding: 5px 0px;
+		border: 1px solid #AAAAAA;
+		border-radius: 5px;
+		margin-right: 3px;
+		width: 50px;
+		font-size: 11px;
+		text-align: center;
+		cursor: pointer;
+		background-color: #DDDDDD;
+		transition: all 300ms ease;
+	}
+
+/* NIK */
+.x-gm .users-name::before{ content: "[GM]"; color: #2F77D9; text-shadow: 0px 0px 2px #2AF; }
+.chat-item>.x-gm::before{ content: "[GM]"; color: #2F77D9; text-shadow: 0px 0px 2px #2AF; }
+.room-user-title>.x-gm::before{ content: "[GM]"; color: #2F77D9; text-shadow: 0px 0px 2px #2AF; }
+.x-designer .users-name::before{ content: "[디자이너]"; color: #019c88; text-shadow: 0px 0px 2px #7cffee; }
+.chat-item>.x-designer::before{ content: "[디자이너]"; color: #019c88; text-shadow: 0px 0px 2px #7cffee; }
+.room-user-title>.x-designer::before{ content: "[디자이너]"; color: #019c88; text-shadow: 0px 0px 2px #7cffee; }
+.x-league .users-name::before{ content: "[리그]"; color: #8400ff; text-shadow: 0px 0px 2px #d8aeff; }
+.chat-item>.x-league::before{ content: "[리그]"; color: #8400ff; text-shadow: 0px 0px 2px #d8aeff; }
+.room-user-title>.x-league::before{ content: "[리그]"; color: #8400ff; text-shadow: 0px 0px 2px #d8aeff; }
+.x-bj .users-name::before{ content: "[BJ]"; color: #001eff; text-shadow: 0px 0px 2px #7d8cff; }
+.chat-item>.x-bj::before{ content: "[BJ]"; color: #001eff; text-shadow: 0px 0px 2px #7d8cff; }
+.room-user-title>.x-bj::before{ content: "[BJ]"; color: #001eff; text-shadow: 0px 0px 2px #7d8cff; }
+.x-yt .users-name::before{ content: "[YT]"; color: #ff0030; text-shadow: 0px 0px 2px #ff9aad; }
+.chat-item>.x-yt::before{ content: "[YT]"; color: #ff0030; text-shadow: 0px 0px 2px #ff9aad; }
+.room-user-title>.x-yt::before{ content: "[YT]"; color: #ff0030; text-shadow: 0px 0px 2px #ff9aad; }
+
+.x-red_name{ color: #FF3333; }
+.x-orange_name{ color: #FFA533; }
+.x-green_name{ color: #43C227; }
+.x-blue_name{ color: #2F77D9; }
+.x-indigo_name{ color: #1C18B9; }
+.x-purple_name{ color: #A939CC; }
+.x-pink_name{ color: #F15F9A; }

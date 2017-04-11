@@ -1,0 +1,188 @@
+:8496 [2017-02-16 00:34:21] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8496 [2017-02-16 00:35:39] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8496 [2017-02-16 00:36:43] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8496 [2017-02-16 00:37:57] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8497 [2017-02-16 00:39:17] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8496 [2017-02-16 00:41:13] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8496 [2017-02-16 00:41:56] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8497 [2017-02-16 00:42:12] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8496 [2017-02-16 00:44:22] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8497 [2017-02-16 00:45:24] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8496 [2017-02-16 00:46:50] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8497 [2017-02-16 00:48:29] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8497 [2017-02-16 00:48:40] ERROR: TypeError: Cannot read property 'findOne' of undefined
+TypeError: Cannot read property 'findOne' of undefined
+    at WebSocketServer.<anonymous> (E:\KKUTU\Server\lib\Game\slave.js:102:16)
+    at emitOne (events.js:96:13)
+    at WebSocketServer.emit (events.js:188:7)
+    at E:\KKUTU\Server\lib\node_modules\ws\lib\WebSocketServer.js:91:14
+    at completeHybiUpgrade2 (E:\KKUTU\Server\lib\node_modules\ws\lib\WebSocketServer.js:284:5)
+    at completeHybiUpgrade1 (E:\KKUTU\Server\lib\node_modules\ws\lib\WebSocketServer.js:309:13)
+    at WebSocketServer.handleHybiUpgrade (E:\KKUTU\Server\lib\node_modules\ws\lib\WebSocketServer.js:337:3)
+    at WebSocketServer.handleUpgrade (E:\KKUTU\Server\lib\node_modules\ws\lib\WebSocketServer.js:173:26)
+    at Server.WebSocketServer._onServerUpgrade (E:\KKUTU\Server\lib\node_modules\ws\lib\WebSocketServer.js:89:12)
+    at emitThree (events.js:116:13):8497 [2017-02-16 00:50:29] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8497 [2017-02-16 00:52:11] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8497 [2017-02-16 00:53:21] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12):8497 [2017-02-16 00:54:37] ERROR: TypeError: Cannot read property '_id' of null
+TypeError: Cannot read property '_id' of null
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:44:26
+    at go (E:\KKUTU\Server\lib\sub\lizard.js:25:16)
+    at E:\KKUTU\Server\lib\Game\games\jaqwi.js:240:5
+    at callback (E:\KKUTU\Server\lib\sub\collection.js:298:13)
+    at Query.preCB (E:\KKUTU\Server\lib\sub\collection.js:280:6)
+    at Query.handleReadyForQuery (E:\KKUTU\Server\lib\node_modules\pg\lib\query.js:112:10)
+    at Connection.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\client.js:172:19)
+    at emitOne (events.js:101:20)
+    at Connection.emit (events.js:188:7)
+    at Socket.<anonymous> (E:\KKUTU\Server\lib\node_modules\pg\lib\connection.js:121:12)
